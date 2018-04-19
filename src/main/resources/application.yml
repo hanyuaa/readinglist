@@ -1,0 +1,33 @@
+spring:
+    application:
+        name: readinglist
+    # Redis配置
+    redis:
+        host: 192.168.172.3
+        port: 6379
+        password:
+        # 连接超时时间（毫秒）
+        timeout: 10000
+        pool:
+        max-idle: 20
+        min-idle: 5
+        max-active: 20
+        max-wait: 2
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:log4jdbc:mysql://123.57.77.85:3306/wechat?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+        name:
+        username: wechat
+        password: 123qjmb
+#        driver-class-name: net.sf.log4jdbc.DriverSpy
+        driver-class-name: com.mysql.jdbc.Driver
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+            connection-init-sql: select 1
+            max-lifetime: 1800000 #30分钟，服务器wait_timeout设置为30分钟了
+  #            leakDetectionThreshold: 2000 #2s 后connection还不回归pool，则提示可能的connection leak
+            connectionTimeout: 5000 #5s,get connection from pool
