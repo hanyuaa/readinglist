@@ -15,7 +15,7 @@ spring:
         max-wait: 2
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:log4jdbc:mysql://123.57.77.85:3306/wechat?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+        url: #jdbc:log4jdbc:mysql://123.57.77.85:3306/wechat?useUnicode=true&characterEncoding=utf8&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
         name:
         username: wechat
         password: 123qjmb
