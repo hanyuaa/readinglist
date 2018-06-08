@@ -1,21 +1,16 @@
 package com.manning;
 
-import com.google.common.collect.Lists;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Optional;
+import com.wordsfilter.WordsFilterUtil;
+import com.wordsfilter.result.FilteredResult;
 
 /**
  * Created by hanyu on 2018/4/30.
  */
-@Component
 public class Demo_06 {
     public static void main(String[] args) throws Exception {
-        ArrayList<Integer> integers = new ArrayList<>();
-        integers.add(1);
-        Optional<Integer> first = integers.stream().findFirst();
+        String s = "同方";
 
-        System.out.println(first.toString());
+        FilteredResult filteredResult = WordsFilterUtil.filterTextWithPunctuation(s, '*');
+        System.out.println(filteredResult.getFilteredContent());
     }
 }

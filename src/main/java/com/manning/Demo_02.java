@@ -1,32 +1,44 @@
 package com.manning;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.wordsfilter.WordsFilterUtil;
+import com.wordsfilter.result.FilteredResult;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by hanyu on 2018/4/9.
  */
 public class Demo_02 {
-    public static void main(String[] args){
-        List<Integer> costBeforeTax = Arrays.asList(100, 200, 300, 400, 500);
+    public static void main(String[] args) throws Exception{
+        long start = System.currentTimeMillis();
+        String s = "";
+        FilteredResult filteredResult = WordsFilterUtil.filterHtml(s, '*');
 
-        List<Integer> collect = costBeforeTax.stream().filter(x -> x > 200).collect(Collectors.toList());
-        System.out.print(collect);
+        String badWords = filteredResult.getBadWords();
+        String filteredContent = filteredResult.getFilteredContent();
+        String goodWords = filteredResult.getGoodWords();
 
-    }
+        String[] split = badWords.split(",");
+        System.out.println(badWords+split.length);
+        System.out.println(filteredContent);
+        System.out.println(goodWords);
+        System.out.println((System.currentTimeMillis() - start));
 
-    public static void filter(List<String> names, Predicate<String> condition) {
 
-        for(String name: names)  {
-            if(condition.test(name)) {
-                System.out.println(name + " ");
-            }
+        /*InputStream inputStream = Demo_02.class.getResourceAsStream("/sensitive-words.dict");
+
+
+        InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
+        BufferedReader reader1 = new BufferedReader(reader);
+        String line = "";
+        while ((line = reader1.readLine())!=null){
+            System.out.println(line);
         }
+
+        reader1.close();
+        reader.close();
+        inputStream.close();*/
     }
 }

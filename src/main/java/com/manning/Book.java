@@ -79,4 +79,10 @@ public class Book {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    public Book(String title) {
+        this.title = title;
+    }
+    public Book() {
+    }
 }

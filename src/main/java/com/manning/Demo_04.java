@@ -1,33 +1,54 @@
 package com.manning;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.*;
+import java.util.HashSet;
 
 /**
  * Created by hanyu on 2018/4/17.
  */
 public class Demo_04 {
-    public static void main(String[] args) {
-        Book b1 = new Book();
-        b1.setId(1l);
-        b1.setTitle("2017-5");
-        Book b2 = new Book();
-        b2.setId(2l);
-        b2.setTitle("2017-6");
-        Book b3 = new Book();
-        b3.setId(3l);
-        b3.setTitle("2017-2");
-        Book b4 = new Book();
-        b4.setId(4l);
-        b4.setTitle("2017-4");
-        List<Book> books = Lists.newArrayList();
-        books = books.stream().sorted(Comparator.comparing(Book::getTitle)).collect(Collectors.toList());
+    public static void main(String[] args) throws Exception{
+        readFile();
 
-        System.out.println(books);
+        /*for (String s : hashSet) {
+            System.out.println(s);
+        }*/
     }
 
+    //将一行一行的写入set集合中,然后再写出去,格式是 你好=4
+    public static HashSet<String> readFile() throws Exception{
+        File file = new File("C:\\Users\\hanyu\\Desktop\\敏感词\\source2.txt");
+        FileInputStream is = new FileInputStream(file);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+
+        File out = new File("C:\\Users\\hanyu\\Desktop\\敏感词\\source3.txt");
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(out),"UTF-8"));
+
+        String line;
+        HashSet<String> set = Sets.newHashSet();
+        int i = 1;
+        while ((line = reader.readLine()) != null){
+            //line = line.substring(0,line.length()-2);
+            //set.add(line);
+            //System.out.println(i);
+            //i++;
+            line = line +"\r\n";
+            writer.write(line);
+
+        }
+        /*for (String s : set) {
+            s = s +"=4\r\n";
+            writer.write(s);
+        }*/
+        //System.out.println(set.size()+"-------");
+
+        reader.close();
+        is.close();
+
+        writer.close();
+
+        return set;
+    }
 }
