@@ -10,7 +10,7 @@ import java.util.HashSet;
  */
 public class Demo_04 {
     public static void main(String[] args) throws Exception{
-        readFile();
+        //readFile();
 
         /*for (String s : hashSet) {
             System.out.println(s);

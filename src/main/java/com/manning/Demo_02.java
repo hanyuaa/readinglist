@@ -11,9 +11,9 @@ import java.io.InputStreamReader;
  * Created by hanyu on 2018/4/9.
  */
 public class Demo_02 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
-        String s = "";
+        String s = "大家好,我不是胡锦涛 av avatar";
         FilteredResult filteredResult = WordsFilterUtil.filterHtml(s, '*');
 
         String badWords = filteredResult.getBadWords();
@@ -21,7 +21,7 @@ public class Demo_02 {
         String goodWords = filteredResult.getGoodWords();
 
         String[] split = badWords.split(",");
-        System.out.println(badWords+split.length);
+        System.out.println(badWords + split.length);
         System.out.println(filteredContent);
         System.out.println(goodWords);
         System.out.println((System.currentTimeMillis() - start));
