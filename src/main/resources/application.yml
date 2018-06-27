@@ -13,5 +13,5 @@ spring:
         max-wait: 2
     data:
         elasticsearch:
-            cluster-nodes: 60.205.151.183:19300
-            cluster-name: gzc_es_test
+            cluster-nodes: 192.168.172.3:9300
+            cluster-name: elasticsearch
