@@ -1,5 +1,4 @@
-/*
-package com.manning;
+package com.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,37 +11,36 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 
-*/
 /**
- * Created by hanyu on 2018/6/14.
- *//*
-
+ * Created by hanyu on 2018/8/20.
+ */
 @Configuration
 public class ElasticSearchConfiguration {
+
     @Bean
     public ElasticsearchTemplate elasticsearchTemplate(Client client, Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder) {
-        return new ElasticsearchTemplate(client, new CustomEntityMapper(jackson2ObjectMapperBuilder.createXmlMapper(false).build()));
+        return new ElasticsearchTemplate(client, new CustomerEntityMapper(jackson2ObjectMapperBuilder.createXmlMapper(false).build()));
     }
 
-    public class CustomEntityMapper implements EntityMapper {
+    public class CustomerEntityMapper implements EntityMapper {
 
         private ObjectMapper objectMapper;
 
-        public CustomEntityMapper(ObjectMapper objectMapper) {
+        public CustomerEntityMapper(ObjectMapper objectMapper) {
             this.objectMapper = objectMapper;
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
         }
 
         @Override
-        public String mapToString(Object object) throws IOException {
-            return objectMapper.writeValueAsString(object);
+        public String mapToString(Object o) throws IOException {
+            return objectMapper.writeValueAsString(o);
         }
 
         @Override
-        public <T> T mapToObject(String source, Class<T> clazz) throws IOException {
-            return objectMapper.readValue(source, clazz);
+        public <T> T mapToObject(String s, Class<T> aClass) throws IOException {
+            return objectMapper.readValue(s, aClass);
         }
     }
+
 }
-*/

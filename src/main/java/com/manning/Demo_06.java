@@ -1,6 +1,5 @@
 package com.manning;
 
-import com.google.common.collect.Lists;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.DocWriteRequest;
 import org.elasticsearch.action.admin.indices.alias.Alias;
@@ -15,33 +14,34 @@ import org.elasticsearch.action.support.ActiveShardCount;
 import org.elasticsearch.action.support.IndicesOptions;
 import org.elasticsearch.action.support.WriteRequest;
 import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.client.Client;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.node.NodeClient;
+import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.document.DocumentField;
+import org.elasticsearch.common.settings.Setting;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.VersionType;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Demo_06 {
+
     private static final String HOST = "192.168.172.3";
     private static final int PORT = 9200;
 
     public static void main(String[] args) throws Exception {
-        ArrayList<Long> longs = Lists.newArrayList(1l, 2l, 3l, 4l, 5l, 6l);
-        String[] strings = longs.stream().map(String::valueOf).toArray(String[]::new);
-        for (String string : strings) {
-            System.out.println(string);
-        }
+
     }
 
     public static void bulkRequest() throws IOException {

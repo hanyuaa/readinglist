@@ -1,44 +1,20 @@
 package com.manning;
 
-import com.wordsfilter.WordsFilterUtil;
-import com.wordsfilter.result.FilteredResult;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.Calendar;
 
 /**
  * Created by hanyu on 2018/4/9.
  */
 public class Demo_02 {
     public static void main(String[] args) throws Exception {
-        long start = System.currentTimeMillis();
-        String s = "大家好,我不是胡锦涛 av avatar";
-        FilteredResult filteredResult = WordsFilterUtil.filterHtml(s, '*');
+        Calendar checkPoint = Calendar.getInstance();
+        checkPoint.set(Calendar.DATE, checkPoint.get(Calendar.DATE) - 180);
+        checkPoint.set(Calendar.HOUR_OF_DAY, 0);
+        checkPoint.set(Calendar.MINUTE, 0);
+        checkPoint.set(Calendar.SECOND, 0);
 
-        String badWords = filteredResult.getBadWords();
-        String filteredContent = filteredResult.getFilteredContent();
-        String goodWords = filteredResult.getGoodWords();
+        System.out.println(checkPoint.getTime()
+        );
 
-        String[] split = badWords.split(",");
-        System.out.println(badWords + split.length);
-        System.out.println(filteredContent);
-        System.out.println(goodWords);
-        System.out.println((System.currentTimeMillis() - start));
-
-
-        /*InputStream inputStream = Demo_02.class.getResourceAsStream("/sensitive-words.dict");
-
-
-        InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
-        BufferedReader reader1 = new BufferedReader(reader);
-        String line = "";
-        while ((line = reader1.readLine())!=null){
-            System.out.println(line);
-        }
-
-        reader1.close();
-        reader.close();
-        inputStream.close();*/
     }
 }

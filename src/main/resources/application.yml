@@ -1,17 +1,16 @@
 spring:
     application:
         name: readinglist
-    redis:
-        host: 192.168.172.3
-        port: 6379
-        password:
-        timeout: 10000
-        pool:
-        max-idle: 20
-        min-idle: 5
-        max-active: 20
-        max-wait: 2
-    data:
-        elasticsearch:
-            cluster-nodes: 192.168.172.3:9300
-            cluster-name: elasticsearch
+
+rocketmq:
+  namesrvAddr: 192.168.172.3:9876
+  producerGroupName: producerGroup
+  consumerGroupName: consumerGroup
+  producerInstanceName: producerInstanceName
+  consumerInstanceName: consumerInstanceName
+  producerTranInstanceName: producerTranInstanceName
+  consumerBatchMaxSize: 1
+  consumerBroadcasting: false
+  subscribe[0]: TopicTest1:TagA
+  enableHisConsumer: false
+  enableOrderConsumer: false
